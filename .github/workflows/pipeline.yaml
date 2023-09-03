@@ -6,12 +6,12 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 jobs:
-  build:
-    name: 'Build & Publish'
+  test_connection:
+    name: 'Test connect to ssh server'
     runs-on: ubuntu-latest
     steps:
     
-      - name: executing remote ssh commands using password
+      - name: executing remote ssh commands
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.SERVER_HOST_CENTRAL }}
@@ -23,3 +23,16 @@ jobs:
             hostname
             whoami
             docker ps -a
+            
+  docker_build:
+    name: 'build app docker-file'
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: build docker
+        run : |
+          docker build -t webpage .
+          docker images
+        
+        
+  
