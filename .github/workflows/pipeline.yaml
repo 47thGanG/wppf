@@ -28,7 +28,10 @@ jobs:
     name: 'build app docker-file'
     runs-on: ubuntu-latest
     steps:
-
+  
+      - name: Git clone my repo
+        uses: actions/checkout@v2
+          
       - name: build docker
         run : |
           docker build -t webpage .
