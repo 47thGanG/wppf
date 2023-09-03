@@ -1,18 +1,18 @@
-name: Docker Image CI
+name: Test connect to server
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-    
+  workflow_dispatch:
 jobs:
   build:
     name: 'Build & Publish'
     runs-on: ubuntu-latest
     steps:
     
-      - name: "Run deploy on server"
-        uses: appleboy/ssh-action@master
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.SERVER_HOST_CENTRAL }}
           username: ${{ secrets.SERVER_USERNAME_CENTRAL }}
