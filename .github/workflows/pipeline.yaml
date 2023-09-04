@@ -1,7 +1,6 @@
 name: Test connect to server
 env:
-  APPLICATION_NAME        : "wppf"
-  CONTAINER_REGISTRY_NAME : "ssbotdocker"
+  APPLICATION_NAME: "wppf"
 on:
   push:
     branches: [ "main" ]
@@ -53,4 +52,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.CONTAINER_REGISTRY_NAME }}/${{ env.APPLICATION_NAME}}:${{ github.sha }}
+          tags: ${{ secrets.CONTAINER_REGISTRY_ADDRESS }}/${{ secrets.CONTAINER_REGISTRY_NAME }}/${{ env.APPLICATION_NAME}}:${{ github.sha }}
