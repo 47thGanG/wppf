@@ -28,14 +28,11 @@ jobs:
             docker ps -a
             
   docker_build:
+  
     name: 'build app docker-file'
     runs-on: ubuntu-latest
     steps:
 
-      - name: Set outputs
-        id: vars
-        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-        
       - name: Git clone my repo
         uses: actions/checkout@v2
           
@@ -55,4 +52,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.CONTAINER_REGISTRY_NAME }}/${{ env.APPLICATION_NAME}}:${{ steps.vars.outputs.sha_short }}
+          tags: ${{ secrets.CONTAINER_REGISTRY_NAME }}/${{ env.APPLICATION_NAME}}:${{ github.sha }}
