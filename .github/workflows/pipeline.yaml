@@ -55,4 +55,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.APPLICATION_NAME}}:${{ steps.vars.outputs.sha_short }}
+          tags: ${{ secrets.CONTAINER_REGISTRY_NAME }}/${{ env.APPLICATION_NAME}}:${{ steps.vars.outputs.sha_short }}
