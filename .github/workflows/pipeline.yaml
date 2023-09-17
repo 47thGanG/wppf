@@ -32,10 +32,6 @@ jobs:
       - name: Git clone my repo
         uses: actions/checkout@v2
           
-      - name: Build Docker
-        run : |
-          docker build -t webpage .
-          
       - name: Login to Container Registry
         uses: docker/login-action@v2
         with:
