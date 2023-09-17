@@ -1,11 +1,7 @@
-name: Test connect to server
+name: Test action
 env:
   APPLICATION_NAME: "wppf"
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
