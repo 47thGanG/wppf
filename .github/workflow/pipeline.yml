@@ -1,4 +1,4 @@
-name: test-manual
+name: test-man
 on: workflow_dispatch
 jobs:
   my-job:
