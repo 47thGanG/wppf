@@ -4,6 +4,8 @@ jobs:
   my-job:
     runs-on: ubuntu-latest
     steps:
+      - name: Git clone my repo
+        uses: actions/checkout@v2
       - name: Set outputs
         id: vars
         run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
