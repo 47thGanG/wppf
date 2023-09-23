@@ -1,47 +1,11 @@
-name: Test action
+name: man-build-push
 env:
-  APPLICATION_NAME: "wppf"
+  APPLICATION_NAME: "new_arch"
 on:
   workflow_dispatch:
-
 jobs:
-  test_connection:
-    name: 'Test connect to ssh server'
+  my-job:
     runs-on: ubuntu-latest
     steps:
-    
-      - name: executing remote ssh commands
-        uses: appleboy/ssh-action@v1.0.0
-        with:
-          host: ${{ secrets.SERVER_HOST_CENTRAL }}
-          username: ${{ secrets.SERVER_USERNAME_CENTRAL }}
-          key: ${{ secrets.SERVER_KEY_CENTRAL }}
-          port: ${{ secrets.SERVER_PORT_CENTRAL }}
-          script: |
-            pwd
-            hostname
-            whoami
-            docker ps -a
-            
-  docker_build:
-  
-    name: 'build app docker-file'
-    runs-on: ubuntu-latest
-    steps:
-
-      - name: Git clone my repo
-        uses: actions/checkout@v2
-          
-      - name: Login to Container Registry
-        uses: docker/login-action@v2
-        with:
-          registry: ${{ secrets.CONTAINER_REGISTRY_ADDRESS }}
-          username: ${{ secrets.CONTAINER_REGISTRY_USERNAME }}
-          password: ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
-
-      - name: Build and push
-        uses: docker/build-push-action@v4
-        with:
-          context: .
-          push: true
-          tags: ${{ secrets.CONTAINER_REGISTRY_ADDRESS }}/${{ secrets.CONTAINER_REGISTRY_NAME }}/${{ env.APPLICATION_NAME}}:${{ github.sha }}
+      - name: my-step
+        run: echo "Hello World!"
