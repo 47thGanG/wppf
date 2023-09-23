@@ -1,8 +1,5 @@
-name: man-build-push
-env:
-  APPLICATION_NAME: "new_arch"
-on:
-  workflow_dispatch:
+name: test-manual
+on: workflow_dispatch:
 jobs:
   my-job:
     runs-on: ubuntu-latest
